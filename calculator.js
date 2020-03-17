@@ -18,37 +18,54 @@ $(document).ready(function() {
     var btnClear = $("#button-clear");
     var firstNumberText = $("#first-number");
     var operatorText = $("#operator");
+    var secondNumberText = $("#second-number");
+
+    // If operator is present, then add numbers to secondNumberText
+    // If operator is NOT present, then add numbers to firstNumberText
+    function firstOrSecond(value) {
+        if (operatorText.text() === "") {
+            firstNumberText.append(value);
+            console.log("first number")
+        }
+        else {
+            secondNumberText.append(value);
+            console.log("second number")
+            console.log(operatorText);
+        }
+    }
 
     // Assign on click functionality to number buttons
     btn1.on('click', function() {
-        firstNumberText.append('1')
+        // firstNumberText.append('1')
+        // Call function that appends whatever is passed into it to the display
+        firstOrSecond(1);
     })
     btn2.on('click', function() {
-        firstNumberText.append('2')
+        firstOrSecond(2);
     })
     btn3.on('click', function() {
-        firstNumberText.append('3')
+        firstOrSecond(3);
     })
     btn4.on('click', function() {
-        firstNumberText.append('4')
+        firstOrSecond(4);
     })
     btn5.on('click', function() {
-        firstNumberText.append('5')
+        firstOrSecond(5)
     })
     btn6.on('click', function() {
-        firstNumberText.append('6')
+        firstOrSecond(6)
     })
     btn7.on('click', function() {
-        firstNumberText.append('7')
+        firstOrSecond(7)
     })
     btn8.on('click', function() {
-        firstNumberText.append('8')
+        firstOrSecond(8);
     })
     btn9.on('click', function() {
-        firstNumberText.append('9')
+        firstOrSecond(9);
     })
     btn0.on('click', function() {
-        firstNumberText.append('0')
+        firstOrSecond(0);
     })
 
     // Assign on click functionality to operator buttons
@@ -73,14 +90,17 @@ $(document).ready(function() {
     })
 
     btnClear.on('click', function() {
-        
+       firstNumberText.text("")
+       secondNumberText.text("")
+       operatorText.text("") 
     })
 
     btnEqual.on('click', function() {
         
     })
 
-    // If operator is present, then add numbers to secondNumberText
-    // If operator is NOT present, then add numbers to firstNumberText
+
+
+
     
 })
