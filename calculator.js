@@ -19,25 +19,22 @@ $(document).ready(function() {
     var firstNumberText = $("#first-number");
     var operatorText = $("#operator");
     var secondNumberText = $("#second-number");
+    var resultText = $("#result");
 
     // If operator is present, then add numbers to secondNumberText
     // If operator is NOT present, then add numbers to firstNumberText
+    // Append passed number to proper text display
     function firstOrSecond(value) {
         if (operatorText.text() === "") {
             firstNumberText.append(value);
-            console.log("first number")
         }
         else {
             secondNumberText.append(value);
-            console.log("second number")
-            console.log(operatorText);
         }
     }
 
     // Assign on click functionality to number buttons
     btn1.on('click', function() {
-        // firstNumberText.append('1')
-        // Call function that appends whatever is passed into it to the display
         firstOrSecond(1);
     })
     btn2.on('click', function() {
@@ -92,14 +89,46 @@ $(document).ready(function() {
     btnClear.on('click', function() {
        firstNumberText.text("")
        secondNumberText.text("")
-       operatorText.text("") 
+       operatorText.text("")
+       resultText.text("")
     })
 
     btnEqual.on('click', function() {
-        
+        // Get firstNumberText and secondNumberText
+        // Get operator
+        // Calculate answer of firstNumberText operator secondNumberText
+        var answer = calculate(firstNumberText, secondNumberText, operatorText);
+        resultText.text(answer);
     })
 
+    function calculate(firstNum, secondNum, operator) {
+        var answer = 0;
 
+        if (operator.text() === "+") {
+            answer = parseInt(firstNum.text()) + parseInt(secondNum.text());
+        }
+        else if (operator.text() === "-") {
+            answer = parseInt(firstNum.text()) - parseInt(secondNum.text());
+        }
+        else if (operator.text() === "x") {
+            answer = parseInt(firstNum.text()) * parseInt(secondNum.text());
+        }
+        else if (operator.text() === "^") {
+            answer = Math.pow(parseInt(firstNum.text()),parseInt(secondNum.text()));
+
+            // for (i=0; i < parseInt(secondNum.text()); i++) {
+            //     answer *= parseInt(firstNum.text());
+            // }
+            // answer = parseInt(firstNum.text()) * parseInt(secondNum.text());
+        }
+        else {
+            answer = parseInt(firstNum.text()) / parseInt(secondNum.text());
+        }
+
+        return answer;
+    }
+    
+    
 
 
     
