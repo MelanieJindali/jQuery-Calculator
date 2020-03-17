@@ -1,0 +1,4 @@
+1. Get values from calculator buttons
+2. Assign on click function to buttons to display user input on screen
+3. Display result in Result card when user presses equals button
+4. Clear button clears the Result card
